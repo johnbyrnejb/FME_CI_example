@@ -2,10 +2,10 @@
 #! <WORKSPACE
 #    Command-line to run this workspace:
 #        /opt/fme-desktop-2019/fme /home/byrnejo/personalProjects/FME_CI_example/ci_example.fmw
-#              --SourceDataset_POSTGIS "database_connection"
-#              --county_selector "GLA"
 #              --DestDataset_ESRISHAPE "/home/byrnejo/temp/output"
 #              --Generalise "100"
+#              --county_selector "BNF"
+#              --SourceDataset_ESRISHAPE "/home/byrnejo/temp/output/business_products.ros_registration_counties.shp"
 #    
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
@@ -14,14 +14,14 @@
 #!   DESCRIPTION=""
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
-#!   DOC_EXTENTS="5424.23 1181.96"
-#!   DOC_TOP_LEFT="-2817.21 -1172.19"
+#!   DOC_EXTENTS="5061.13 1295.25"
+#!   DOC_TOP_LEFT="-2454.11 -1172.19"
 #!   END_PYTHON=""
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="19558"
-#!   FME_DOCUMENT_GUID="f40b0d48-1d5a-4296-9a94-5d16fc13f0ed"
-#!   FME_DOCUMENT_PRIORGUID="ccca4567-2e36-41cb-97d4-a9729d99b184"
+#!   FME_DOCUMENT_GUID="ade77a31-2a83-4848-9332-f59c36afbe6f"
+#!   FME_DOCUMENT_PRIORGUID="ccca4567-2e36-41cb-97d4-a9729d99b184,f40b0d48-1d5a-4296-9a94-5d16fc13f0ed"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
@@ -30,7 +30,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2019.1.0.0 (20190423 - Build 19558 - linux-x64)"
-#!   LAST_SAVE_DATE="2019-08-22T10:41:52"
+#!   LAST_SAVE_DATE="2019-08-22T14:21:43"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -49,33 +49,33 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-3551.65 837.105"
+#!   VIEW_POSITION="-3163.67 713.644"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
-#!   ZOOM_SCALE="62"
+#!   ZOOM_SCALE="66"
 #! >
 #! <DATASETS>
 #! <DATASET
 #!   IS_SOURCE="true"
 #!   ROLE="READER"
-#!   FORMAT="POSTGIS"
-#!   DATASET="$(SourceDataset_POSTGIS)"
-#!   KEYWORD="POSTGIS_1"
+#!   FORMAT="ESRISHAPE"
+#!   DATASET="$(SourceDataset_ESRISHAPE)"
+#!   KEYWORD="ESRISHAPE_2"
 #!   MULTI_GEOM_ALLOWED="false"
 #!   ATTR_MAX_LENGTH="0"
 #!   ATTR_CASE="ANY"
 #!   ALLOWED_FEAT_TYPES=""
 #!   WRITE_DEFS="true"
-#!   DEFLINE_TEMPLATE="postgis_sql_where_clause &quot;&quot; postgis_sql_statement &quot;&quot;"
+#!   DEFLINE_TEMPLATE="SHAPE_GEOMETRY {FME_GEN_GEOMETRY}"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_type char(50) fme_sweep_angle float8 postgres_oid int4 fme_rotation float8 fme_primary_axis float8 postgis_collection_part_id int4 fme_color char(50) multi_reader_keyword char(50) fme_text_string char(50) multi_reader_id int4 fme_geometry char(50) postgis_collection_id int4 fme_secondary_axis float8 multi_reader_full_id int4 fme_dataset char(50) fme_text_size float8 fme_feature_type char(50) postgis_type char(50) multi_reader_type char(50) fme_start_angle float8 fme_fill_color char(50) fme_basename char(50)"
-#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP postgis_query_settings_group postgis_sql_where_clause%postgis_sql_statement Table&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT_SQL_CFG postgis_sql_where_clause MODE,WHERE;FORMAT,POSTGIS WHERE Clause&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT_SQL_CFG postgis_sql_statement MODE,SQL;FORMAT,POSTGIS SELECT Statement&quot; &quot;&quot; "
-#!   ATTR_INDEX_TYPES="BTree RTree Hash PrimaryKey"
+#!   EXPOSABLE_ATTRS="fme_type char(50) fme_sweep_angle double fme_rotation double fme_primary_axis double fme_color char(50) multi_reader_keyword char(50) fme_text_string char(50) shape_measures char(254) multi_reader_id long fme_geometry char(50) SHAPE_GEOMETRY char(50) fme_secondary_axis double multi_reader_full_id long fme_dataset char(50) fme_text_size double fme_feature_type char(50) shape_geometry_error{} char(254) multi_reader_type char(50) fme_start_angle double fme_fill_color char(50) fme_basename char(50)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES="Indexed"
 #!   ATTR_NAME_INVALID_CHARS=""
 #!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
 #!   ENABLED="true"
 #!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
-#!   DATASET_TYPE="DATABASE"
+#!   DATASET_TYPE="FILEDIR"
 #!   GENERATE_FME_BUILD_NUM="19558"
 #!   COORDSYS=""
 #!   FEATURE_TYPES=""
@@ -86,39 +86,31 @@
 #! >
 #! <METAFILE_PARAMETER
 #!   NAME="ADVANCED_PARMS"
-#!   VALUE="POSTGIS_IN_FEATURES_PER_FETCH POSTGIS_IN_BEGIN_SQL POSTGIS_IN_END_SQL POSTGIS_IN_SEARCH_METHOD POSTGIS_OUT_BULK_COPY POSTGIS_OUT_INSERT_TEXT_GEOMETRY POSTGIS_OUT_TRANSACTION_INTERVAL POSTGIS_OUT_BEGIN_SQL POSTGIS_OUT_END_SQL"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="ATTRIBUTE_READING"
-#!   VALUE="DEFLINE_ATTRS"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="ATTRIBUTE_READING_HISTORIC"
-#!   VALUE="ALL"
+#!   VALUE="ESRISHAPE_IN_ENCODING ESRISHAPE_IN_TRIM_PRECEDING_SPACES ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY ESRISHAPE_IN_MEASURES_AS_Z ESRISHAPE_IN_DISSOLVE_HOLES ESRISHAPE_IN_REPORT_BAD_GEOMETRY ESRISHAPE_OUT_STRICT_COMPATIBILITY ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER ESRISHAPE_OUT_SURFACE_AND_SOLID_STORAGE ESRISHAPE_OUT_MEASURES_AS_Z"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="DATASET_NAME"
-#!   VALUE="Database"
+#!   VALUE="shp file"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_GEOMETRY_TYPE"
+#!   VALUE="shape_first_feature"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_DEFAULT_NAME"
-#!   VALUE="Table1"
+#!   VALUE="Shapefile1"
 #! />
 #! <METAFILE_PARAMETER
 #!   NAME="FEATURE_TYPE_NAME"
-#!   VALUE="Table"
+#!   VALUE="Shapefile"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="NETWORK_AUTHENTICATION"
-#!   VALUE="NO"
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the Esri Shapefile(s)"
 #! />
 #! <METAFILE_PARAMETER
-#!   NAME="NETWORK_PROXY"
-#!   VALUE="NO"
-#! />
-#! <METAFILE_PARAMETER
-#!   NAME="SUPPORTS_SCHEMA_IN_FEATURE_TYPE_NAME"
-#!   VALUE="YES"
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the Esri Shapefile"
 #! />
 #! </DATASET>
 #! <DATASET
@@ -180,201 +172,189 @@
 #! <DATA_TYPES>
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="bool"
-#!   FME_TYPE="fme_boolean"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
 #!   FORMAT_TYPE="char(width)"
 #!   FME_TYPE="fme_char(width)"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="varchar(width)"
-#!   FME_TYPE="fme_varchar(width)"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="text"
-#!   FME_TYPE="fme_buffer"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="xml"
-#!   FME_TYPE="fme_xml"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="json"
-#!   FME_TYPE="fme_json"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="jsonb"
-#!   FME_TYPE="fme_json"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="bytea"
-#!   FME_TYPE="fme_binarybuffer"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="bytea"
-#!   FME_TYPE="fme_varbinary(width)"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="bytea"
+#!   FORMAT_TYPE="char(width)"
 #!   FME_TYPE="fme_binary(width)"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int2"
-#!   FME_TYPE="fme_int16"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(254)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int2"
-#!   FME_TYPE="fme_int8"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(254)"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int2"
-#!   FME_TYPE="fme_uint8"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(254)"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int4"
-#!   FME_TYPE="fme_int32"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(254)"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int4"
-#!   FME_TYPE="fme_uint16"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(20)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int8"
-#!   FME_TYPE="fme_int64"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="int8"
-#!   FME_TYPE="fme_uint32"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="numeric(width,decimal)"
-#!   FME_TYPE="fme_decimal(width,decimal)"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="numeric(20,0)"
-#!   FME_TYPE="fme_uint64"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="oid"
-#!   FME_TYPE="fme_uint32"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="serial"
-#!   FME_TYPE="fme_int32"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="float4"
-#!   FME_TYPE="fme_real32"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="money"
-#!   FME_TYPE="fme_real32"
-#!   FORMAT="POSTGIS"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="float8"
-#!   FME_TYPE="fme_real64"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="char(12)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
 #!   FORMAT_TYPE="date"
 #!   FME_TYPE="fme_date"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="time"
-#!   FME_TYPE="fme_time"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="timetz"
-#!   FME_TYPE="fme_time"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="timestamp"
-#!   FME_TYPE="fme_datetime"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="timestamptz"
-#!   FME_TYPE="fme_datetime"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="uuid"
-#!   FME_TYPE="fme_buffer"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="bit(width)"
-#!   FME_TYPE="fme_char(width)"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="number(15,7)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="varbit"
-#!   FME_TYPE="fme_buffer"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="varbit(width)"
-#!   FME_TYPE="fme_varchar(width)"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="short"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="short"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="short"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="long"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="long"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <DATA_TYPE
 #!   IS_SOURCE="false"
@@ -566,159 +546,105 @@
 #! <GEOM_TYPES>
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipoint"
+#!   FORMAT_TYPE="shape_point"
 #!   FME_TYPE="fme_point"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_point"
+#!   FORMAT_TYPE="shape_multipoint"
 #!   FME_TYPE="fme_point"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multilinestring"
+#!   FORMAT_TYPE="shape_polyline"
 #!   FME_TYPE="fme_line"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multicurve"
-#!   FME_TYPE="fme_line"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_linestring"
-#!   FME_TYPE="fme_line"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_circularstring"
-#!   FME_TYPE="fme_line"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_compoundcurve"
-#!   FME_TYPE="fme_line"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipolygon"
+#!   FORMAT_TYPE="shape_polygon"
 #!   FME_TYPE="fme_area"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multisurface"
-#!   FME_TYPE="fme_area"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_polygon"
-#!   FME_TYPE="fme_area"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_curvepolygon"
-#!   FME_TYPE="fme_area"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipolygon"
-#!   FME_TYPE="fme_rectangle"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipolygon"
-#!   FME_TYPE="fme_rounded_rectangle"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipoint"
+#!   FORMAT_TYPE="shape_point"
 #!   FME_TYPE="fme_text"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipolygon"
+#!   FORMAT_TYPE="shape_polygon"
 #!   FME_TYPE="fme_ellipse"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multilinestring"
+#!   FORMAT_TYPE="shape_polyline"
 #!   FME_TYPE="fme_arc"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_triangle"
-#!   FME_TYPE="fme_area"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_polyhedralsurface"
+#!   FORMAT_TYPE="shape_multipatch"
 #!   FME_TYPE="fme_surface"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_polyhedralsurface"
+#!   FORMAT_TYPE="shape_multipatch"
 #!   FME_TYPE="fme_solid"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_tin"
-#!   FME_TYPE="fme_surface"
-#!   FORMAT="POSTGIS"
+#!   FORMAT_TYPE="shape_polygon"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_none"
+#!   FORMAT_TYPE="shape_polygon"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="shape_null"
 #!   FME_TYPE="fme_no_geom"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_geometry"
+#!   FORMAT_TYPE="shape_first_feature"
 #!   FME_TYPE="fme_no_geom"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_geometrycollection"
-#!   FME_TYPE="fme_collection"
-#!   FORMAT="POSTGIS"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipolygon"
+#!   FORMAT_TYPE="shape_polygon"
 #!   FME_TYPE="fme_raster"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_multipolygon"
+#!   FORMAT_TYPE="shape_polygon"
 #!   FME_TYPE="fme_point_cloud"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="true"
-#!   FORMAT_TYPE="postgis_none"
+#!   FORMAT_TYPE="shape_null"
 #!   FME_TYPE="fme_feature_table"
-#!   FORMAT="POSTGIS"
+#!   FORMAT="ESRISHAPE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="shape_null"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="ESRISHAPE"
 #! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="false"
@@ -825,45 +751,9 @@
 #! </GEOM_TYPES>
 #! <FEATURE_TYPES>
 #! <FEATURE_TYPE
-#!   IS_SOURCE="true"
-#!   NODE_NAME="ros_registration_counties"
-#!   FEATURE_TYPE_NAME=""
-#!   FEATURE_TYPE_NAME_QUALIFIER="business_products"
-#!   IS_EDITABLE="false"
-#!   IDENTIFIER="2"
-#!   FEAT_GEOMTYPE="postgis_multipolygon"
-#!   POSITION="-2817.2138755806072 -208.62311285450519"
-#!   BOUNDING_RECT="-2817.2138755806072 -208.62311285450519 1037.0010682577295 71"
-#!   ORDER="500000000000000"
-#!   COLLAPSED="true"
-#!   KEYWORD="POSTGIS_1"
-#!   PARMS_EDITED="false"
-#!   ENABLED="true"
-#!   HIDDEN_USER_ATTRS=""
-#!   READ_SELECT_ATTRS="true"
-#!   MERGE_FILTER=""
-#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
-#!   MERGE_FILTER_CASE_SENSITIVE="true"
-#!   DYNAMIC_SCHEMA="false"
-#! >
-#!     <FEAT_ATTRIBUTE ATTR_NAME="objectid" ATTR_TYPE="int8" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="county" ATTR_TYPE="varchar(50)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="operationa" ATTR_TYPE="timestamp" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="county2" ATTR_TYPE="varchar(5)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="max_y" ATTR_TYPE="numeric(38,8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="max_x" ATTR_TYPE="numeric(38,8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="min_x" ATTR_TYPE="numeric(38,8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="min_y" ATTR_TYPE="numeric(38,8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="col_gp" ATTR_TYPE="varchar(50)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <FEAT_ATTRIBUTE ATTR_NAME="gdb_geomattr_data" ATTR_TYPE="bytea" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_query_settings_group" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_sql_statement" PARM_VALUE=""/>
-#!     <DEFLINE_PARM PARM_NAME="postgis_sql_where_clause" PARM_VALUE=""/>
-#! </FEATURE_TYPE>
-#! <FEATURE_TYPE
 #!   IS_SOURCE="false"
 #!   NODE_NAME="business_products.ros_registration_counties"
-#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME="@Value(county)_output"
 #!   FEATURE_TYPE_NAME_QUALIFIER=""
 #!   IS_EDITABLE="true"
 #!   IDENTIFIER="12"
@@ -883,8 +773,40 @@
 #!     <DEFLINE_PARM PARM_NAME="shape_dimension" PARM_VALUE="auto"/>
 #!     <DEFLINE_PARM PARM_NAME="shape_layer_group" PARM_VALUE=""/>
 #! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="business_products.ros_registration_counties"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="14"
+#!   FEAT_GEOMTYPE="shape_polygon"
+#!   POSITION="-2454.1122135627306 123.06809681000038"
+#!   BOUNDING_RECT="-2454.1122135627306 123.06809681000038 1037.0010682577295 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="ESRISHAPE_2"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="objectid" ATTR_TYPE="number(20,0)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="county" ATTR_TYPE="char(50)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="county2" ATTR_TYPE="char(5)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET 
+#!   NAME="ESRISHAPE_2"
+#!   OVERRIDE="-ESRISHAPE_2_DATASET"
+#!   DATASET="ESRISHAPE_2/business_products.ros_registration_counties.shp"
+#! />
+#! </READER_DATASETS>
 #! <WRITER_DATASETS>
 #! <DATASET 
 #!   NAME="ESRISHAPE_1"
@@ -895,16 +817,6 @@
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
-#!   GUI_LINE="GUI NAMED_DB_CONNECTION_ENCODED SourceDataset_POSTGIS FMT:POSTGIS%FAMILY:PostgreSQL Connection:"
-#!   DEFAULT_VALUE="database_connection"
-#!   IS_STAND_ALONE="false"
-#! />
-#! <GLOBAL_PARAMETER
-#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR county_selector County:"
-#!   DEFAULT_VALUE="GLA"
-#!   IS_STAND_ALONE="false"
-#! />
-#! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME DestDataset_ESRISHAPE Destination Esri Shapefile Folder:"
 #!   DEFAULT_VALUE="/home/byrnejo/temp/output"
 #!   IS_STAND_ALONE="false"
@@ -912,6 +824,16 @@
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI RANGE_SLIDER_OR_ATTR Generalise 0%MAX%MAX%OFF Generalization Tolerance:"
 #!   DEFAULT_VALUE="100"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR county_selector County:"
+#!   DEFAULT_VALUE="BNF"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_ESRISHAPE Shapefiles(*.shp)|*.shp|Compressed_Shapefiles(*.shz)|*.shz|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files(*)|* Source Esri Shapefile(s):"
+#!   DEFAULT_VALUE="/home/byrnejo/temp/output/business_products.ros_registration_counties.shp"
 #!   IS_STAND_ALONE="false"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -930,21 +852,6 @@
 #!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="5"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="14"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu Mono&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tester to identify the county the user has input&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="548.10975720146791 -429.00051000510018"
-#!   TOP_LEFT="548.10975720146791 -429.00051000510018"
-#!   BOTTOM_RIGHT="1083.127714394027 -555.00147001470032"
-#!   BOUNDING_RECT="548.10975720146791 -429.00051000510018 535.01795719255915 126.00096000960009"
-#!   ORDER="500000000000012"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="7"
 #! />
 #! </COMMENTS>
 #! <CONSTANTS>
@@ -1054,34 +961,12 @@
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Non_exported_counties"/>
 #! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="15"
-#!   TYPE="AttributeRemover"
-#!   VERSION="1"
-#!   POSITION="-1306.5065715592218 -270.13257145558475"
-#!   BOUNDING_RECT="-1306.5065715592218 -270.13257145558475 454 71"
-#!   ORDER="500000000000013"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="19558"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="objectid" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="county" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="county2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="max_y,max_x,gdb_geomattr_data,min_x,min_y,col_gp,operationa"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
-#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="16"
-#!   SOURCE_NODE="2"
-#!   TARGET_NODE="15"
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="-1"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -1112,17 +997,6 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="17"
-#!   SOURCE_NODE="15"
-#!   TARGET_NODE="5"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
 #!   IDENTIFIER="11"
 #!   SOURCE_NODE="7"
 #!   TARGET_NODE="10"
@@ -1145,24 +1019,24 @@
 #! </WORKSPACE>
 
 FME_PYTHON_VERSION 37
-GUI IGNORE SourceDataset_POSTGIS_1,POSTGIS_IN_FME_CONNECTION_GROUP_POSTGIS_1,POSTGIS_IN_FME_GROUP_NAMED1_POSTGIS_1,POSTGIS_IN_WHERE_CLAUSE_POSTGIS_1,POSTGIS_IN_USE_SEARCH_ENVELOPE_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1,POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1,POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1,POSTGIS_IN_SEARCH_METHOD_POSTGIS_1,POSTGIS_IN_ADVANCED_POSTGIS_1,POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1,POSTGIS_IN_BEGIN_SQL_POSTGIS_1,POSTGIS_IN_END_SQL_POSTGIS_1,POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1,DestDataset_ESRISHAPE_1,ESRISHAPE_OUT_WRITER_PARAMETERS_ESRISHAPE_1,ESRISHAPE_OUT_ENCODING_ESRISHAPE_1,ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1,ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1,ESRISHAPE_OUT_ADVANCED_ESRISHAPE_1,ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1,ESRISHAPE_OUT_GEOMETRY_ESRISHAPE_1,ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1,ESRISHAPE_OUT_MEASURES_AS_Z_ESRISHAPE_1
-DEFAULT_MACRO SourceDataset_POSTGIS database_connection
-GUI NAMED_DB_CONNECTION_ENCODED SourceDataset_POSTGIS FMT:POSTGIS%FAMILY:PostgreSQL Connection:
-DEFAULT_MACRO county_selector GLA
-GUI OPTIONAL TEXT county_selector County:
+GUI IGNORE SourceDataset_ESRISHAPE_2,ESRISHAPE_IN_READER_PARAMETERS_ESRISHAPE_2,ESRISHAPE_IN_ENCODING_ESRISHAPE_2,ESRISHAPE_IN_USE_SEARCH_ENVELOPE_ESRISHAPE_2,ESRISHAPE_IN_SEARCH_ENVELOPE_MINX_ESRISHAPE_2,ESRISHAPE_IN_SEARCH_ENVELOPE_MINY_ESRISHAPE_2,ESRISHAPE_IN_SEARCH_ENVELOPE_MAXX_ESRISHAPE_2,ESRISHAPE_IN_SEARCH_ENVELOPE_MAXY_ESRISHAPE_2,ESRISHAPE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_ESRISHAPE_2,ESRISHAPE_IN_CLIP_TO_ENVELOPE_ESRISHAPE_2,ESRISHAPE_IN_ADVANCED_ESRISHAPE_2,ESRISHAPE_IN_TRIM_PRECEDING_SPACES_ESRISHAPE_2,ESRISHAPE_IN_GEOMETRY_ESRISHAPE_2,ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY_ESRISHAPE_2,ESRISHAPE_IN_MEASURES_AS_Z_ESRISHAPE_2,ESRISHAPE_IN_DISSOLVE_HOLES_ESRISHAPE_2,ESRISHAPE_IN_REPORT_BAD_GEOMETRY_ESRISHAPE_2,ESRISHAPE_IN_NETWORK_AUTHENTICATION_ESRISHAPE_2,DestDataset_ESRISHAPE_1,ESRISHAPE_OUT_WRITER_PARAMETERS_ESRISHAPE_1,ESRISHAPE_OUT_ENCODING_ESRISHAPE_1,ESRISHAPE_OUT_WRITE_SPATIAL_INDEX_ESRISHAPE_1,ESRISHAPE_OUT_COMPRESSED_SHAPE_FILE_ESRISHAPE_1,ESRISHAPE_OUT_ADVANCED_ESRISHAPE_1,ESRISHAPE_OUT_STRICT_COMPATIBILITY_ESRISHAPE_1,ESRISHAPE_OUT_GEOMETRY_ESRISHAPE_1,ESRISHAPE_OUT_PRESERVE_RING_VERTEX_ORDER_ESRISHAPE_1,ESRISHAPE_OUT_MEASURES_AS_Z_ESRISHAPE_1
 DEFAULT_MACRO DestDataset_ESRISHAPE /home/byrnejo/temp/output
 GUI DIRNAME DestDataset_ESRISHAPE Destination Esri Shapefile Folder:
 DEFAULT_MACRO Generalise 100
 GUI RANGE_SLIDER Generalise 0%MAX%MAX%OFF Generalization Tolerance:
-INCLUDE [ if {{$(SourceDataset_POSTGIS)} == {}} { puts_real {Parameter 'SourceDataset_POSTGIS' must be given a value.}; exit 1; }; ]
+DEFAULT_MACRO county_selector BNF
+GUI OPTIONAL TEXT county_selector County:
+DEFAULT_MACRO SourceDataset_ESRISHAPE /home/byrnejo/temp/output/business_products.ros_registration_counties.shp
+GUI MULTIFILE SourceDataset_ESRISHAPE Shapefiles(*.shp)|*.shp|Compressed_Shapefiles(*.shz)|*.shz|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files(*)|* Source Esri Shapefile(s):
 INCLUDE [ if {{$(DestDataset_ESRISHAPE)} == {}} { puts_real {Parameter 'DestDataset_ESRISHAPE' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(Generalise)} == {}} { puts_real {Parameter 'Generalise' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(SourceDataset_ESRISHAPE)} == {}} { puts_real {Parameter 'SourceDataset_ESRISHAPE' must be given a value.}; exit 1; }; ]
 #! START_HEADER
 #! START_WB_HEADER
 READER_TYPE MULTI_READER
-MULTI_READER_TYPE{0} POSTGIS
-MULTI_READER_KEYWORD{0} POSTGIS_1
-MULTI_READER_GEN_DIRECTIVES{0} SEARCH_ENVELOPE_MAXY,0,SEARCH_ENVELOPE_COORDINATE_SYSTEM,,NAMED_CONNECTION,database_connection,_MERGE_SCHEMAS,YES,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,USE_TRUE_POSTGIS_TYPES,yes,CLIP_TO_ENVELOPE,NO,DISABLE_COLLECTION_SPLITTING,yes,SEARCH_METHOD,MBR_OVERLAPS,SEARCH_ENVELOPE_MINX,0,SEARCH_ENVELOPE_MINY,0,EXPOSE_ATTRS_GROUP,,POSTGIS_EXPOSE_FORMAT_ATTRS,,USE_SEARCH_ENVELOPE,NO,READ_TIME_WITH_TIMEZONE,Yes,TABLELIST,business_products.ros_registration_counties,WHERE_CLAUSE,,SCHEMAS_FOR_TABLE_LISTING,business_products,SEARCH_ENVELOPE_MAXX,0,CREATE_FEATURE_TABLES_FROM_DATA,Yes,FEATURES_PER_FETCH,10000,BEGIN_SQL,,END_SQL,,ADVANCED,
+MULTI_READER_TYPE{0} ESRISHAPE
+MULTI_READER_KEYWORD{0} ESRISHAPE_2
+MULTI_READER_GEN_DIRECTIVES{0} SIMPLE_DONUT_GEOMETRY,simple,SEARCH_ENVELOPE_MAXY,0,SEARCH_ENVELOPE_COORDINATE_SYSTEM,,ESRISHAPE_EXPOSE_FORMAT_ATTRS,,_MERGE_SCHEMAS,YES,CLIP_TO_ENVELOPE,NO,DISSOLVE_HOLES,no,REPORT_BAD_GEOMETRY,no,CHECK_NUMERIC_FIELDS,yes,MEASURES_AS_Z,no,SEARCH_ENVELOPE_MINX,0,SEARCH_ENVELOPE_MINY,0,EXPOSE_ATTRS_GROUP,,USE_SEARCH_ENVELOPE,NO,TRIM_PRECEDING_SPACES,yes,SEARCH_ENVELOPE_MAXX,0,UPPER_CASE_ATTR_NAMES,No,ENCODING,fme-source-encoding,GEOMETRY,,ADVANCED,,NUMERIC_TYPE_ATTRIBUTE_HANDLING,STANDARD_TYPES
 WRITER_TYPE MULTI_WRITER
 MULTI_WRITER_DATASET_ORDER BY_ID
 MULTI_WRITER_FIRST_WRITER_ID 0
@@ -1170,98 +1044,131 @@ MULTI_WRITER_TYPE{0} ESRISHAPE
 MULTI_WRITER_KEYWORD{0} ESRISHAPE_1
 #! END_WB_HEADER
 #! START_WB_HEADER
-MACRO WB_KEYWORD "POSTGIS_1"
+MACRO WB_KEYWORD "ESRISHAPE_2"
 #! END_WB_HEADER
-#! START_SOURCE_HEADER POSTGIS POSTGIS_1
+#! START_SOURCE_HEADER ESRISHAPE ESRISHAPE_2
+# ============================================================================
+# The following GUI line prompts for the source shapefiles
 # The dataset this mapping file was generated from was:
 #! END_SOURCE_HEADER
 #! START_WB_HEADER
 DEFAULT_MACRO SourceDataset
 INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
- puts {DEFAULT_MACRO SourceDataset_POSTGIS_1 $(SourceDataset)}     \
+ puts {DEFAULT_MACRO SourceDataset_ESRISHAPE_2 $(SourceDataset)}     \
  } ]
 #! END_WB_HEADER
-#! START_SOURCE_HEADER POSTGIS POSTGIS_1
-DEFAULT_MACRO SourceDataset_POSTGIS_1 $(SourceDataset_POSTGIS)
-GUI NAMED_DB_CONNECTION_ENCODED SourceDataset_POSTGIS_1 FMT:POSTGIS Connection:
-DEFAULT_MACRO POSTGIS_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_POSTGIS_1 Yes
-POSTGIS_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(POSTGIS_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_POSTGIS_1)"
-DEFAULT_MACRO POSTGIS_IN_READ_TIME_WITH_TIMEZONE_POSTGIS_1 Yes
-POSTGIS_1_READ_TIME_WITH_TIMEZONE "$(POSTGIS_IN_READ_TIME_WITH_TIMEZONE_POSTGIS_1)"
-DEFAULT_MACRO POSTGIS_IN_DISABLE_COLLECTION_SPLITTING_POSTGIS_1 yes
-POSTGIS_1_DISABLE_COLLECTION_SPLITTING "$(POSTGIS_IN_DISABLE_COLLECTION_SPLITTING_POSTGIS_1)"
-DEFAULT_MACRO POSTGIS_IN_USE_TRUE_POSTGIS_TYPES_POSTGIS_1 yes
-POSTGIS_1_USE_TRUE_POSTGIS_TYPES "$(POSTGIS_IN_USE_TRUE_POSTGIS_TYPES_POSTGIS_1)"
-DEFAULT_MACRO POSTGIS_IN_FME_CONNECTION_GROUP_POSTGIS_1 
-GUI OPTIONAL DISCLOSUREGROUP POSTGIS_IN_FME_CONNECTION_GROUP_POSTGIS_1 POSTGIS_IN_NAMED_CONNECTION%POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1 Database Connection
-DEFAULT_MACRO POSTGIS_IN_FME_GROUP_NAMED1_POSTGIS_1 
-GUI OPTIONAL DISCLOSUREGROUP POSTGIS_IN_FME_GROUP_NAMED1_POSTGIS_1 POSTGIS_IN_TABLELIST%POSTGIS_IN_WHERE_CLAUSE_POSTGIS_1 Constraints
-DEFAULT_MACRO POSTGIS_IN_WHERE_CLAUSE_POSTGIS_1 
-POSTGIS_1_WHERE_CLAUSE "$(POSTGIS_IN_WHERE_CLAUSE_POSTGIS_1)"
-GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGIS_IN_WHERE_CLAUSE_POSTGIS_1 MODE,WHERE;FORMAT,POSTGIS WHERE Clause:
-DEFAULT_MACRO POSTGIS_IN_EXPOSE_ATTRS_GROUP_POSTGIS_1 
-POSTGIS_1_EXPOSE_ATTRS_GROUP "$(POSTGIS_IN_EXPOSE_ATTRS_GROUP_POSTGIS_1)"
+#! START_SOURCE_HEADER ESRISHAPE ESRISHAPE_2
+DEFAULT_MACRO SourceDataset_ESRISHAPE_2 $(SourceDataset_ESRISHAPE)
+GUI MULTIFILE SourceDataset_ESRISHAPE_2 Shapefiles(*.shp)|*.shp|Compressed_Shapefiles(*.shz)|*.shz|All_Files(*)|* Source Esri Shapefile(s):
+# =====================================================================
+# Provide some control over what attributes have the user-selected
+# encoding applied. Normally all attributes are updated after being
+# read, but the following lines exclude from this treatment all
+# attributes whose names start with fme_ or shape_.
+ESRISHAPE_2_UNENCODED_ATTR_PREFIX fme_ shape_
+#Added default value for dissolve holes so that default for DI is consistent with workbench
+DEFAULT_MACRO ESRISHAPE_IN_DISSOLVE_HOLES_ESRISHAPE_2 no
+ESRISHAPE_2_DISSOLVE_HOLES "$(ESRISHAPE_IN_DISSOLVE_HOLES_ESRISHAPE_2)"
+DEFAULT_MACRO ESRISHAPE_IN_READER_PARAMETERS_ESRISHAPE_2 
+GUI OPTIONAL DISCLOSUREGROUP ESRISHAPE_IN_READER_PARAMETERS_ESRISHAPE_2 ESRISHAPE_IN_UPPER_CASE_ATTR_NAMES%ESRISHAPE_IN_ENCODING_ESRISHAPE_2%ESRISHAPE_IN_NUMERIC_TYPE_ATTRIBUTE_HANDLING Reader Parameters
+# ============================================================================
+# Determines whether the attribute names should be uppercased, or whether they
+# should stay as specified in the shapefile. Once the mapping file/workspace
+# has been generated, the value for this keyword should not be changed.
+DEFAULT_MACRO ESRISHAPE_IN_UPPER_CASE_ATTR_NAMES_ESRISHAPE_2 No
+ESRISHAPE_2_UPPER_CASE_ATTR_NAMES "$(ESRISHAPE_IN_UPPER_CASE_ATTR_NAMES_ESRISHAPE_2)"
+# ============================================================================
+# The following keyword allows the user to choose what encoding to
+# use for reading the shapefile, overrides dbf file LDID or .cpg
+# file if present.
+DEFAULT_MACRO ESRISHAPE_IN_ENCODING_ESRISHAPE_2 fme-source-encoding
+ESRISHAPE_2_ENCODING "$(ESRISHAPE_IN_ENCODING_ESRISHAPE_2)"
+GUI STRING_OR_ENCODING ESRISHAPE_IN_ENCODING_ESRISHAPE_2 fme-source-encoding%* Character Encoding
+# ============================================================================
+# Determines whether numeric attributes should be interpreted as binary or as
+# bound number fields (ActualDBFrepresentation)
+DEFAULT_MACRO ESRISHAPE_IN_NUMERIC_TYPE_ATTRIBUTE_HANDLING_ESRISHAPE_2 STANDARD_TYPES
+ESRISHAPE_2_NUMERIC_TYPE_ATTRIBUTE_HANDLING "$(ESRISHAPE_IN_NUMERIC_TYPE_ATTRIBUTE_HANDLING_ESRISHAPE_2)"
+#Note: Using the search envelope requires the shape index files (.sbnand.sbx)
+DEFAULT_MACRO ESRISHAPE_IN_EXPOSE_ATTRS_GROUP_ESRISHAPE_2 
+ESRISHAPE_2_EXPOSE_ATTRS_GROUP "$(ESRISHAPE_IN_EXPOSE_ATTRS_GROUP_ESRISHAPE_2)"
 # Include this file in source setting section to add native search envelope processing
 # Zero as a default means we don't do any search -- this makes workbench happier
-DEFAULT_MACRO POSTGIS_IN_USE_SEARCH_ENVELOPE_POSTGIS_1 NO
-POSTGIS_1_USE_SEARCH_ENVELOPE "$(POSTGIS_IN_USE_SEARCH_ENVELOPE_POSTGIS_1)"
-GUI ACTIVEDISCLOSUREGROUP POSTGIS_IN_USE_SEARCH_ENVELOPE_POSTGIS_1 POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1%POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1%POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1%POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1%POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1%POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1%POSTGIS_IN_SEARCH_METHOD_POSTGIS_1%POSTGIS_IN_SEARCH_METHOD_FILTER%POSTGIS_IN_SEARCH_ORDER%POSTGIS_IN_SEARCH_FEATURE%POSTGIS_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
+DEFAULT_MACRO ESRISHAPE_IN_USE_SEARCH_ENVELOPE_ESRISHAPE_2 NO
+ESRISHAPE_2_USE_SEARCH_ENVELOPE "$(ESRISHAPE_IN_USE_SEARCH_ENVELOPE_ESRISHAPE_2)"
+GUI ACTIVEDISCLOSUREGROUP ESRISHAPE_IN_USE_SEARCH_ENVELOPE_ESRISHAPE_2 ESRISHAPE_IN_SEARCH_ENVELOPE_MINX_ESRISHAPE_2%ESRISHAPE_IN_SEARCH_ENVELOPE_MINY_ESRISHAPE_2%ESRISHAPE_IN_SEARCH_ENVELOPE_MAXX_ESRISHAPE_2%ESRISHAPE_IN_SEARCH_ENVELOPE_MAXY_ESRISHAPE_2%ESRISHAPE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_ESRISHAPE_2%ESRISHAPE_IN_CLIP_TO_ENVELOPE_ESRISHAPE_2%ESRISHAPE_IN_SEARCH_METHOD%ESRISHAPE_IN_SEARCH_METHOD_FILTER%ESRISHAPE_IN_SEARCH_ORDER%ESRISHAPE_IN_SEARCH_FEATURE%ESRISHAPE_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
 # ===========================================================================
-GUI LOOKUP POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1 <Unused>,0 
-DEFAULT_MACRO POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1 0
-POSTGIS_1_SEARCH_ENVELOPE "$(POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1)"
-GUI OPTIONAL FLOAT POSTGIS_IN_SEARCH_ENVELOPE_MINX_POSTGIS_1 Minimum X:
+GUI LOOKUP ESRISHAPE_IN_SEARCH_ENVELOPE_MINX_ESRISHAPE_2 <Unused>,0 
+DEFAULT_MACRO ESRISHAPE_IN_SEARCH_ENVELOPE_MINX_ESRISHAPE_2 0
+ESRISHAPE_2_SEARCH_ENVELOPE "$(ESRISHAPE_IN_SEARCH_ENVELOPE_MINX_ESRISHAPE_2)"
+GUI OPTIONAL FLOAT ESRISHAPE_IN_SEARCH_ENVELOPE_MINX_ESRISHAPE_2 Minimum X:
 # ===========================================================================
-GUI LOOKUP POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1 <Unused>,0 
-DEFAULT_MACRO POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1 0
-POSTGIS_1_SEARCH_ENVELOPE "$(POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1)"
-GUI OPTIONAL FLOAT POSTGIS_IN_SEARCH_ENVELOPE_MINY_POSTGIS_1 Minimum Y:
+GUI LOOKUP ESRISHAPE_IN_SEARCH_ENVELOPE_MINY_ESRISHAPE_2 <Unused>,0 
+DEFAULT_MACRO ESRISHAPE_IN_SEARCH_ENVELOPE_MINY_ESRISHAPE_2 0
+ESRISHAPE_2_SEARCH_ENVELOPE "$(ESRISHAPE_IN_SEARCH_ENVELOPE_MINY_ESRISHAPE_2)"
+GUI OPTIONAL FLOAT ESRISHAPE_IN_SEARCH_ENVELOPE_MINY_ESRISHAPE_2 Minimum Y:
 # ===========================================================================
-GUI LOOKUP POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1 <Unused>,0 
-DEFAULT_MACRO POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1 0
-POSTGIS_1_SEARCH_ENVELOPE "$(POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1)"
-GUI OPTIONAL FLOAT POSTGIS_IN_SEARCH_ENVELOPE_MAXX_POSTGIS_1 Maximum X:
+GUI LOOKUP ESRISHAPE_IN_SEARCH_ENVELOPE_MAXX_ESRISHAPE_2 <Unused>,0 
+DEFAULT_MACRO ESRISHAPE_IN_SEARCH_ENVELOPE_MAXX_ESRISHAPE_2 0
+ESRISHAPE_2_SEARCH_ENVELOPE "$(ESRISHAPE_IN_SEARCH_ENVELOPE_MAXX_ESRISHAPE_2)"
+GUI OPTIONAL FLOAT ESRISHAPE_IN_SEARCH_ENVELOPE_MAXX_ESRISHAPE_2 Maximum X:
 # ===========================================================================
-GUI LOOKUP POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1 <Unused>,0 
-DEFAULT_MACRO POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1 0
-POSTGIS_1_SEARCH_ENVELOPE "$(POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1)"
-GUI OPTIONAL FLOAT POSTGIS_IN_SEARCH_ENVELOPE_MAXY_POSTGIS_1 Maximum Y:
+GUI LOOKUP ESRISHAPE_IN_SEARCH_ENVELOPE_MAXY_ESRISHAPE_2 <Unused>,0 
+DEFAULT_MACRO ESRISHAPE_IN_SEARCH_ENVELOPE_MAXY_ESRISHAPE_2 0
+ESRISHAPE_2_SEARCH_ENVELOPE "$(ESRISHAPE_IN_SEARCH_ENVELOPE_MAXY_ESRISHAPE_2)"
+GUI OPTIONAL FLOAT ESRISHAPE_IN_SEARCH_ENVELOPE_MAXY_ESRISHAPE_2 Maximum Y:
 # ===========================================================================
-GUI LOOKUP POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1 <Unused>, 
-DEFAULT_MACRO POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1 
-POSTGIS_1_SEARCH_ENVELOPE "$(POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1)"
-GUI OPTIONAL COORDSYS POSTGIS_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_POSTGIS_1 Search Envelope Coordinate System:
+GUI LOOKUP ESRISHAPE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_ESRISHAPE_2 <Unused>, 
+DEFAULT_MACRO ESRISHAPE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_ESRISHAPE_2 
+ESRISHAPE_2_SEARCH_ENVELOPE "$(ESRISHAPE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_ESRISHAPE_2)"
+GUI OPTIONAL COORDSYS ESRISHAPE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_ESRISHAPE_2 Search Envelope Coordinate System:
 # ===========================================================================
-GUI LOOKUP POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1 <Unused>,NO 
-DEFAULT_MACRO POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1 NO
-POSTGIS_1_CLIP_TO_ENVELOPE "$(POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1)"
-GUI OPTIONAL CHECKBOX POSTGIS_IN_CLIP_TO_ENVELOPE_POSTGIS_1 YES%NO Clip to Search Envelope
-DEFAULT_MACRO POSTGIS_IN_SEARCH_METHOD_POSTGIS_1 MBR_OVERLAPS
-POSTGIS_1_SEARCH_METHOD "$(POSTGIS_IN_SEARCH_METHOD_POSTGIS_1)"
-GUI LOOKUP_CHOICE POSTGIS_IN_SEARCH_METHOD_POSTGIS_1 MBR<space>Overlaps,MBR_OVERLAPS%Contains,CONTAINS%Disjoint,DISJOINT%Equals,EQUALS%Intersects,INTERSECTS%Overlaps,OVERLAPS%Touches,TOUCHES%Within,WITHIN Search Method:
-GUI LOOKUP POSTGIS_IN_SEARCH_METHOD_POSTGIS_1 <Unused>,MBR_OVERLAPS 
-DEFAULT_MACRO POSTGIS_IN_ADVANCED_POSTGIS_1 
-GUI OPTIONAL DISCLOSUREGROUP POSTGIS_IN_ADVANCED_POSTGIS_1 POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1%POSTGIS_IN_BEGIN_SQL_POSTGIS_1%POSTGIS_IN_END_SQL_POSTGIS_1 Advanced
-DEFAULT_MACRO POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1 10000
-POSTGIS_1_FEATURES_PER_FETCH "$(POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1)"
-GUI FLOAT POSTGIS_IN_FEATURES_PER_FETCH_POSTGIS_1 Number Of Records To Fetch At A Time
-DEFAULT_MACRO POSTGIS_IN_BEGIN_SQL_POSTGIS_1 
-POSTGIS_1_BEGIN_SQL "$(POSTGIS_IN_BEGIN_SQL_POSTGIS_1)"
-GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGIS_IN_BEGIN_SQL_POSTGIS_1 MODE,SQL;FORMAT,POSTGIS SQL To Run Before Read
-DEFAULT_MACRO POSTGIS_IN_END_SQL_POSTGIS_1 
-POSTGIS_1_END_SQL "$(POSTGIS_IN_END_SQL_POSTGIS_1)"
-GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGIS_IN_END_SQL_POSTGIS_1 MODE,SQL;FORMAT,POSTGIS SQL To Run After Read
-DEFAULT_MACRO POSTGIS_IN_CREATE_FEATURE_TABLES_FROM_DATA_POSTGIS_1 Yes
-POSTGIS_1_CREATE_FEATURE_TABLES_FROM_DATA "$(POSTGIS_IN_CREATE_FEATURE_TABLES_FROM_DATA_POSTGIS_1)"
+GUI LOOKUP ESRISHAPE_IN_CLIP_TO_ENVELOPE_ESRISHAPE_2 <Unused>,NO 
+DEFAULT_MACRO ESRISHAPE_IN_CLIP_TO_ENVELOPE_ESRISHAPE_2 NO
+ESRISHAPE_2_CLIP_TO_ENVELOPE "$(ESRISHAPE_IN_CLIP_TO_ENVELOPE_ESRISHAPE_2)"
+GUI OPTIONAL CHECKBOX ESRISHAPE_IN_CLIP_TO_ENVELOPE_ESRISHAPE_2 YES%NO Clip to Search Envelope
+DEFAULT_MACRO ESRISHAPE_IN_CHECK_NUMERIC_FIELDS_ESRISHAPE_2 yes
+ESRISHAPE_2_CHECK_NUMERIC_FIELDS "$(ESRISHAPE_IN_CHECK_NUMERIC_FIELDS_ESRISHAPE_2)"
+DEFAULT_MACRO ESRISHAPE_IN_ADVANCED_ESRISHAPE_2 
+GUI OPTIONAL DISCLOSUREGROUP ESRISHAPE_IN_ADVANCED_ESRISHAPE_2 ESRISHAPE_IN_TRIM_PRECEDING_SPACES_ESRISHAPE_2%ESRISHAPE_IN_GEOMETRY_ESRISHAPE_2 Advanced
+DEFAULT_MACRO ESRISHAPE_IN_TRIM_PRECEDING_SPACES_ESRISHAPE_2 yes
+ESRISHAPE_2_TRIM_PRECEDING_SPACES "$(ESRISHAPE_IN_TRIM_PRECEDING_SPACES_ESRISHAPE_2)"
+GUI CHOICE ESRISHAPE_IN_TRIM_PRECEDING_SPACES_ESRISHAPE_2 yes%no Trim Preceding Spaces
+DEFAULT_MACRO ESRISHAPE_IN_GEOMETRY_ESRISHAPE_2 
+GUI OPTIONAL DISCLOSUREGROUP ESRISHAPE_IN_GEOMETRY_ESRISHAPE_2 ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY_ESRISHAPE_2%ESRISHAPE_IN_MEASURES_AS_Z_ESRISHAPE_2%ESRISHAPE_IN_DISSOLVE_HOLES_ESRISHAPE_2%ESRISHAPE_IN_REPORT_BAD_GEOMETRY_ESRISHAPE_2 Geometry
+# ============================================================================
+# Option to use simple donut geometry creation, which is faster than the
+# original creation method, but less meticulous at detecting and correcting
+# geometric anomalies (i.e.holeswithinholes)
+DEFAULT_MACRO ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY_ESRISHAPE_2 simple
+ESRISHAPE_2_SIMPLE_DONUT_GEOMETRY "$(ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY_ESRISHAPE_2)"
+GUI LOOKUP_CHOICE ESRISHAPE_IN_SIMPLE_DONUT_GEOMETRY_ESRISHAPE_2 "\"Orientation Only\",simple"%"\"Orientation and Spatial Relationship\",complex" Donut Geometry Detection
+# ============================================================================
+# The following GUI line sets whether measure values in the shapefiles should
+# be treated as elevations.
+DEFAULT_MACRO ESRISHAPE_IN_MEASURES_AS_Z_ESRISHAPE_2 no
+ESRISHAPE_2_MEASURES_AS_Z "$(ESRISHAPE_IN_MEASURES_AS_Z_ESRISHAPE_2)"
+GUI CHOICE ESRISHAPE_IN_MEASURES_AS_Z_ESRISHAPE_2 yes%no Treat Measures as Elevation
+# ============================================================================
+# The following keyword sets whether the reader dissolves holes in donuts.
+ESRISHAPE_2_DISSOLVE_HOLES "$(ESRISHAPE_IN_DISSOLVE_HOLES_ESRISHAPE_2)"
+GUI CHOICE ESRISHAPE_IN_DISSOLVE_HOLES_ESRISHAPE_2 yes%no Dissolve Adjacent Holes
+# ============================================================================
+# The following keyword sets whether bad geometry should be reported via
+# the shape_geometry_error{} list attribute.
+DEFAULT_MACRO ESRISHAPE_IN_REPORT_BAD_GEOMETRY_ESRISHAPE_2 no
+ESRISHAPE_2_REPORT_BAD_GEOMETRY "$(ESRISHAPE_IN_REPORT_BAD_GEOMETRY_ESRISHAPE_2)"
+GUI CHOICE ESRISHAPE_IN_REPORT_BAD_GEOMETRY_ESRISHAPE_2 yes%no Report Geometry Anomalies
+# ===========================================================================
+DEFAULT_MACRO ESRISHAPE_IN_NETWORK_AUTHENTICATION_ESRISHAPE_2 
+ESRISHAPE_2_NETWORK_AUTHENTICATION "$(ESRISHAPE_IN_NETWORK_AUTHENTICATION_ESRISHAPE_2)"
+GUI OPTIONAL AUTHENTICATOR ESRISHAPE_IN_NETWORK_AUTHENTICATION_ESRISHAPE_2 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
 # ============================================================================ 
-DEFAULT_MACRO POSTGIS_IN_ATTRIBUTE_READING_POSTGIS_1 DEFLINE_ATTRS
-POSTGIS_1_ATTRIBUTE_READING "$(POSTGIS_IN_ATTRIBUTE_READING_POSTGIS_1)"
+DEFAULT_MACRO ESRISHAPE_IN_ATTRIBUTE_READING_ESRISHAPE_2 ALL
+ESRISHAPE_2_ATTRIBUTE_READING "$(ESRISHAPE_IN_ATTRIBUTE_READING_ESRISHAPE_2)"
 # ============================================================================ 
-POSTGIS_1_GENERATE_FME_BUILD_NUM 19558
-DEFAULT_MACRO POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1 business_products
-GUI OPTIONAL TEXT POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1 Schemas for Table Listing:
-POSTGIS_1_SCHEMAS_FOR_TABLE_LISTING $(POSTGIS_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGIS_1)
-POSTGIS_1_DATASET "$(SourceDataset_POSTGIS_1)"
+ESRISHAPE_2_GENERATE_FME_BUILD_NUM 19558
+ESRISHAPE_2_DATASET "$(SourceDataset_ESRISHAPE_2)"
 #! END_SOURCE_HEADER
 #! START_WB_HEADER
 MACRO WB_KEYWORD "ESRISHAPE_1"
@@ -1354,11 +1261,11 @@ FME_REPROJECTION_ENGINE FME
 FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
 FME_GEOMETRY_HANDLING Enhanced
 FME_STROKE_MAX_DEVIATION 0
-DEFAULT_MACRO DATASET_KEYWORD_POSTGIS_1 POSTGIS_1
+DEFAULT_MACRO DATASET_KEYWORD_ESRISHAPE_2 ESRISHAPE_2
 DEFAULT_MACRO DATASET_KEYWORD_ESRISHAPE_1 ESRISHAPE_1
 # -------------------------------------------------------------------------
 
-POSTGIS_1_READER_META_ATTRIBUTES fme_feature_type
+ESRISHAPE_2_READER_META_ATTRIBUTES fme_feature_type
 
 # -------------------------------------------------------------------------
 
@@ -1369,28 +1276,27 @@ MULTI_READER_CONTINUE_ON_READER_FAILURE No
 MACRO WORKSPACE_NAME ci_example
 MACRO FME_VIEWER_APP fmedatainspector
 # -------------------------------------------------------------------------
-
-FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_POSTGIS_1)   INPUT FEATURE_TYPE *    ROUTE POSTGIS POSTGIS_1::business_products.ros_registration_counties multi_reader_keyword,$(DATASET_KEYWORD_POSTGIS_1) TO FME_GENERIC ::business_products.ros_registration_counties ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
-POSTGIS_1_MERGE_DEF POSTGIS_1::business_products.ros_registration_counties EXACT business_products.ros_registration_counties DEFLINE postgis_sql_where_clause,,postgis_sql_statement,,objectid,int8,county,varchar<openparen>50<closeparen>,operationa,timestamp,county2,varchar<openparen>5<closeparen>,max_y,numeric<openparen>38<comma>8<closeparen>,max_x,numeric<openparen>38<comma>8<closeparen>,min_x,numeric<openparen>38<comma>8<closeparen>,min_y,numeric<openparen>38<comma>8<closeparen>,col_gp,varchar<openparen>50<closeparen>,gdb_geomattr_data,bytea
+ESRISHAPE_2_DEF business_products.ros_registration_counties   SHAPE_GEOMETRY               shape_polygon   objectid                     number(20,0)   county                       char(50)   county2                      char(5)
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * TeeFactory    FACTORY_NAME "business_products.ros_registration_counties (POSTGIS_1) Splitter"    INPUT FEATURE_TYPE business_products.ros_registration_counties    OUTPUT FEATURE_TYPE business_products.ros_registration_counties_POSTGIS_1
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_ESRISHAPE_2)   INPUT FEATURE_TYPE *    ROUTE ESRISHAPE ESRISHAPE_2::business_products.ros_registration_counties multi_reader_keyword,$(DATASET_KEYWORD_ESRISHAPE_2) TO FME_GENERIC ::business_products.ros_registration_counties ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+ESRISHAPE_2_MERGE_DEF ESRISHAPE_2::business_products.ros_registration_counties EXACT business_products.ros_registration_counties
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "business_products.ros_registration_counties (ESRISHAPE_2) Splitter"    INPUT FEATURE_TYPE business_products.ros_registration_counties    OUTPUT FEATURE_TYPE business_products.ros_registration_counties_ESRISHAPE_2
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeRemover    INPUT  FEATURE_TYPE business_products.ros_registration_counties_POSTGIS_1    OUTPUT { FEATURE_TYPE AttributeRemover_OUTPUT        @RemoveAttributes(fme_encoded,max_y,max_x,gdb_geomattr_data,min_x,min_y,col_gp,operationa)        @RemoveAttributes(fme_pcre_match"$(AttributeRemover_LIST_EXP)")         }
-# -------------------------------------------------------------------------
-FACTORY_DEF * GeneralizeFactory    FACTORY_NAME Generalizer    INPUT  FEATURE_TYPE AttributeRemover_OUTPUT    FLUSH_WHEN_GROUPS_CHANGE No    REJECT_INVALID_GEOM Yes    ALLOW_NULLS yes    REJECT_NOT_DEFAULT Yes    PRESERVE_SHARED_BOUNDARIES No    PRESERVE_PATH_SEGMENTS NO    ALGORITHM Douglas    TOLERANCE "@EvaluateExpression(FDIV,FLOAT,$(Generalise$encode),Generalizer)"    CLEANING_TOLERANCE <Unused>    OUTPUT GENERALIZED FEATURE_TYPE Generalizer_OUTPUT    OUTPUT REJECTED FEATURE_TYPE Generalizer_<REJECTED>
+FACTORY_DEF * GeneralizeFactory    FACTORY_NAME Generalizer    INPUT  FEATURE_TYPE business_products.ros_registration_counties_ESRISHAPE_2    FLUSH_WHEN_GROUPS_CHANGE No    REJECT_INVALID_GEOM Yes    ALLOW_NULLS yes    REJECT_NOT_DEFAULT Yes    PRESERVE_SHARED_BOUNDARIES No    PRESERVE_PATH_SEGMENTS NO    ALGORITHM Douglas    TOLERANCE "@EvaluateExpression(FDIV,FLOAT,$(Generalise$encode),Generalizer)"    CLEANING_TOLERANCE <Unused>    OUTPUT GENERALIZED FEATURE_TYPE Generalizer_OUTPUT    OUTPUT REJECTED FEATURE_TYPE Generalizer_<REJECTED>
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TeeFactory FACTORY_NAME Generalizer_<Rejected> INPUT FEATURE_TYPE Generalizer_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, Generalizer<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME Tester    INPUT  FEATURE_TYPE Generalizer_OUTPUT    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>county2<closeparen>,Tester) = @EvaluateExpression(FDIV,STRING_ENCODED,$(county_selector$encode),Tester) ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE Tester_PASSED    OUTPUT FAILED FEATURE_TYPE Tester_FAILED
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME Non_exported_counties_Logger    INPUT  FEATURE_TYPE Tester_FAILED    OUTPUT FEATURE_TYPE Non_exported_counties_LOGGED                  @Log(ENCODED, "Non_exported_counties:<space>@EvaluateExpression(FDIV,STRING_ENCODED,These<space>counties<space>were<space>not<space>exported:<space><at>Value<openparen>county<closeparen>,Non_exported_counties)","20","20","",INFO,LOG_ONLY,Non_exported_counties_badc2846_2519_46c1_850f_a786d33f60f89)
+FACTORY_DEF * TeeFactory    FACTORY_NAME Non_exported_counties_Logger    INPUT  FEATURE_TYPE Tester_FAILED    OUTPUT FEATURE_TYPE Non_exported_counties_LOGGED                  @Log(ENCODED, "Non_exported_counties:<space>@EvaluateExpression(FDIV,STRING_ENCODED,These<space>counties<space>were<space>not<space>exported:<space><at>Value<openparen>county<closeparen>,Non_exported_counties)","20","20","",INFO,LOG_ONLY,Non_exported_counties_88142a74_9f96_4cfc_a4aa_46302ad54f982)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Non_exported_counties LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE Non_exported_counties_LOGGED
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC Tester_PASSED TO ESRISHAPE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>business_products.ros_registration_counties<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC Tester_PASSED TO ESRISHAPE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>fme_template_feature_type<comma>business_products.ros_registration_counties<closeparen>,<at>EvaluateExpression<openparen>ATTR_CREATE_EXPR<comma>__wb_out_feat_type__<comma><lt>at<gt>Value<lt>openparen<gt>county<lt>closeparen<gt>_output<comma>business_products.ros_registration_counties<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__

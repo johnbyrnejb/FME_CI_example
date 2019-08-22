@@ -1,0 +1,48 @@
+pipeline {
+  agent {label 'loopback'} 
+  // This is the slave node that will be used to build the code
+
+  parameters{
+              choice(choices: 'dev-hosts\nalpha-hosts\ncharlie-hosts\nlive-hosts',
+                    description: 'These are the build envs',
+                    name: 'HOST')
+              // These are the build envs for the Data Team
+            }
+
+
+  stages {
+
+
+    // Builds the job from ansible playbook
+    stage('RunPlaybook') { 
+        steps {
+
+			checkout scm
+			// Checks out the branch
+
+			echo "${HOST}"
+			// Just to help debugging and show which host file is being used.
+
+			withCredentials([file(credentialsId: 'ansible-vault', variable: 'ANSIBLE_VAULT_PWD_FILE')]) {
+			// Passes the credentials to decrypt the vault password
+
+				echo "Running the Ansible Playbook"
+				ansiblePlaybook credentialsId: 'ansible-ssh',
+				// Running the ansible playbook
+
+				extras: '--vault-password-file=${ANSIBLE_VAULT_PWD_FILE}',
+
+				installation: 'Ansible 2.3.1.0',
+
+				inventory: 'ansible/${HOST}',
+				// Parameter for the host file selected
+
+				playbook: 'ansible/fme.yml',
+
+				sudoUser: null
+
+            } 
+        } 
+    }   
+  } 
+} 

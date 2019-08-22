@@ -1,0 +1,11 @@
+- name: Publish the workbench
+  hosts: fme-server
+  vars:
+    workbench: "{{ jenkins_workspace }}/repository_name/ci_example.fmw"
+  roles:
+      - { role: fme-server-publish-wb, tags: ['fme-server-dms-publish-wb'] }
+
+- name: Create FME schedule for running workbench
+  hosts: fme-server
+  roles:
+    - { role: create-job-schedule, tags: ['create-job-schedule'] }
